@@ -26,18 +26,6 @@ fi
 # Change directory to it.
 cd $HOME/multipool/yiimp_multi
 
-# Update it.
-sudo chown -R $USER $HOME/multipool/install/.git/
-if [ "${TAG}" != `git describe --tags` ]; then
-	echo Updating MultiPool YiiMP Multi Server Installer to ${TAG} . . .
-	git fetch --depth 1 --force --prune origin tag ${TAG}
-	if ! git checkout -q ${TAG}; then
-		echo "Update failed. Did you modify something in `pwd`?"
-		exit
-	fi
-	echo
-fi
-
 # Start setup script.
 cd $HOME/multipool/yiimp_multi
 source start.sh
